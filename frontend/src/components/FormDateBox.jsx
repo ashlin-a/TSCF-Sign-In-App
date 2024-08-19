@@ -1,7 +1,7 @@
 export function FormDateBox({ text, onChange, readOnly, value, name }) {
     return (
         <div>
-            <p className="font-semibold">{text}</p>
+            <p className="font-semibold text-content-1">{text}</p>
             <input
                 onChange={onChange}
                 readOnly={readOnly}

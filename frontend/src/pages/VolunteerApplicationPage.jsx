@@ -5,7 +5,7 @@ import { FormTextAreaBox } from '../components/FormTextAreaBox';
 import axios from 'axios';
 import { Button } from '../components/Button';
 import Navbar from '../components/Navbar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { InfoBox } from '../components/InfoBox';
 
 export const VolunteerApplicationPage = () => {
@@ -36,10 +36,35 @@ export const VolunteerApplicationPage = () => {
     const [infoType, setInfoType] = useState('warning');
     const [info, setInfo] = useState(false);
 
+    useEffect(() => {
+        const fetchUsername = async () => {
+            try {
+                const response = await axios.post(
+                    'http://localhost:3000/user/me',
+                    {},
+                    {
+                        headers: {
+                            Authorization:
+                                'Bearer ' + localStorage.getItem('token'),
+                            'Content-Type': 'application/json',
+                        },
+                    },
+                );
+                setEmail(response.data.username);
+            } catch (error) {
+                console.log(error);
+                setInfo(error.response?.data?.message || 'An error occurred');
+                setInfoType('warning');
+            }
+        };
+
+        fetchUsername();
+    }, []);
+
     return (
         <div>
             <Navbar />
-            <div className="p-20">
+            <div className="px-20 pt-5 bg-bkg"> 
                 <form
                     method="post"
                     onSubmit={(e) => {
@@ -117,12 +142,11 @@ export const VolunteerApplicationPage = () => {
                             setPhone(e.target.value);
                         }}
                     />
-                    <FormInputBox
-                        text={'Email'}
-                        onChange={(e) => {
-                            setEmail(e.target.value);
-                        }}
-                    />
+                   <FormInputBox
+                            text={'E-Mail'}
+                            value={email}
+                            readOnly={true}
+                        />
                     <FormRadioButton
                         options={[
                             { key: 'prefCommunication', value: 'Phone' },
@@ -228,7 +252,7 @@ export const VolunteerApplicationPage = () => {
                             }
                         }}
                     />
-                    <h1 className="mt-5 text-2xl font-semibold">
+                    <h1 className="mt-5 text-2xl text-content-1 font-semibold">
                         Emergency Contact
                     </h1>
                     <FormInputBox
@@ -253,7 +277,7 @@ export const VolunteerApplicationPage = () => {
                             setEmergencyContactType(e.target.value);
                         }}
                     />
-                    <h1 className="mt-5 text-2xl font-semibold">References</h1>
+                    <h1 className="mt-5 text-2xl text-content-1 font-semibold">References</h1>
                     <FormInputBox
                         text={'Name'}
                         onChange={(e) => {

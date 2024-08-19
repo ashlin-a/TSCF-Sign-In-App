@@ -16,10 +16,10 @@ export const signinSchema = zod.object({
 export const regFormSchema = zod.object({
     date: zod.coerce.date().optional(),
     name: zod.string(),
-    phone: zod.string(),
-    email: zod.string().email(),
-    prefCommunication: zod.array(zod.string()),
-    housing: zod.string(),
+    phone: zod.string().optional(),
+    email: zod.string().email().optional(),
+    prefCommunication: zod.array(zod.string()).optional(),
+    housing: zod.string().optional(),
     service: zod.array(zod.string()).optional(),
 }).strict();
 

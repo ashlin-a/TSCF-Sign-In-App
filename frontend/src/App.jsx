@@ -14,8 +14,27 @@ import { FoodBankRegPage } from './pages/FoodBankRegPage';
 import AdminProtected from './utils/AdminProtected';
 import { AdminSignInPage } from './pages/AdminSignInPage';
 import { AdminSignUpPage } from './pages/AdminSignUpPage';
+import { useEffect, useState } from 'react';
+import { MdWbSunny } from "react-icons/md";
+import { BsFillMoonStarsFill } from "react-icons/bs";
 
 function App() {
+    const [darkMode, setDarkMode] = useState(() => {
+        const selectedTheme = localStorage.getItem("theme");
+        return selectedTheme === 'dark';
+    });
+
+    useEffect(() => {
+        if (darkMode) {
+            document.body.classList.add('dark');
+            document.body.classList.remove('light');
+        } else {
+            document.body.classList.add('light');
+            document.body.classList.remove('dark');
+        }
+        localStorage.setItem("theme", darkMode ? "dark" : "light");
+    }, [darkMode]);
+
     return (
         <>
             <BrowserRouter>
@@ -43,6 +62,9 @@ function App() {
                     <Route path="*" element={<h1>Page not found</h1>} /> 
                 </Routes>
             </BrowserRouter>
+            <button className='fixed w-10 h-10 z-10 flex items-center justify-center bottom-10 right-10 rounded-full bg-content-1 text-bkg' onClick={()=>{
+                setDarkMode(!darkMode);
+            }}>{darkMode? <MdWbSunny className='text-xl'/> : <BsFillMoonStarsFill />}</button>
         </>
     );
 }

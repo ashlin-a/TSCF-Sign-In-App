@@ -8,6 +8,7 @@ import { SubHeading } from '../components/SubHeading';
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import { InfoBox } from '../components/InfoBox';
+import { FormPhoneBox } from '../components/FormPhoneBox';
 
 export const RegFormPage = () => {
     const [name, setName] = useState('');
@@ -38,12 +39,11 @@ export const RegFormPage = () => {
 
         fetchUsername();
     }, []);
-
-
+    
     return (
         <>
             <Navbar />
-            <div className="px-10 pt-10 md:px-20 lg:px-40 lg:pt-10 xl:px-60">
+            <div className="px-10 bg-bkg pt-10 md:px-20 min-h-screen lg:px-40 lg:pt-10 xl:px-60">
                 <Heading label={'Registration Form'} />
                 <SubHeading
                     text={
@@ -94,9 +94,9 @@ export const RegFormPage = () => {
                                 }}
                             />{' '}
                         </div>
-                        <FormInputBox
+                        <FormPhoneBox
                             text={'Phone Number'}
-                            type={'text'}
+                            type={'text'} required={true}
                             onChange={(e) => {
                                 setPhone(e.target.value);
                             }}

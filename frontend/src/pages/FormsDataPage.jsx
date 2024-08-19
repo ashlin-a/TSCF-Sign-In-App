@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import FormsTable from '../components/FormsTable';
 import { useParams } from 'react-router-dom';
+import AdminNavbar from '../components/AdminNavbar';
 
 export const FormsDataPage = () => {
     const [data, setData] = useState([]);
@@ -32,7 +33,7 @@ export const FormsDataPage = () => {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [typeOfForm]);
 
     if (loading) {
         return <div className="text-center text-lg">Loading...</div>;
@@ -47,13 +48,16 @@ export const FormsDataPage = () => {
     }
 
     return (
+        <div className='bg-bkg min-h-screen'>
+            <AdminNavbar/>
         <div className="container mx-auto p-4">
-            <h1 className="mb-4 text-2xl font-bold">{typeOfForm.split('-')[0][0].toUpperCase()+ typeOfForm.split('-')[0].slice(1)+' '+typeOfForm.split('-')[1]}</h1>
+            <h1 className="mb-4 text-content-1 text-2xl font-bold">{typeOfForm.split('-')[0][0].toUpperCase()+ typeOfForm.split('-')[0].slice(1)+' '+typeOfForm.split('-')[1]}</h1>
             <FormsTable
                 tableData={data}
                 typeOfForm={typeOfForm.split('-')[0]}
                 refreshData={fetchData}
             />
+        </div>
         </div>
     );
 };

@@ -48,6 +48,10 @@ const UserSchema = new Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'VolunteerApp',
     },
+    FoodBank: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: 'Foodbank',
+    },
 });
 
 UserSchema.pre('save', function (next) {
@@ -171,11 +175,9 @@ const RegFormSchema = new Schema({
     },
     prefCommunication: {
         type: [String],
-        required: [true, 'Preferred method of communication is required'],
     },
     housing: {
         type: String,
-        required: [true, 'Housing is required'],
         trim:true,
     },
     service: {

@@ -32,10 +32,10 @@ export const AdminSignInPage = () => {
         <div className="lg:grid h-screen grid-cols-7 bg-[url(./assets/sign-in_bg.jpg)] pt-20 lg:pt-0 bg-cover bg-fixed">
             <div className="hidden lg:block lg:col-span-3">
                 <div className="flex h-screen flex-col items-center justify-center pb-32">
-                    <h1 className="px-20 text-5xl font-black text-bkg">
+                    <h1 className="px-20 text-5xl font-black text-white">
                         The Second Chance Foundation
                     </h1>
-                    <p className="mt-10 px-20 text-2xl font-medium text-bkg/80">
+                    <p className="mt-10 px-20 text-2xl font-medium text-white/80">
                         Supporting Marginalized, Racialized, and Formerly
                         Incarcerated Women
                     </p>

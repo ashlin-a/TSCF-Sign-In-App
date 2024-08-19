@@ -14,7 +14,7 @@ export default function DashboardCard({
     return (
         <div
             className={twMerge(
-                'overflow-hidden rounded-3xl bg-bkg shadow-lg',
+                'overflow-hidden rounded-3xl bg-bkg shadow-lg dark:shadow-primary dark:shadow-md',
                 className,
             )}
         >

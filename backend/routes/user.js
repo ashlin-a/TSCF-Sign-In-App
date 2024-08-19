@@ -21,7 +21,7 @@ import {
     volunteerAppSchema,
 } from '../utils/zodSchemas.js';
 
-const router = Router();
+const router = Router(); 
 
 router.post('/sign-up', async (req, res) => {
     const { username, password, otp } = req.body;
@@ -167,9 +167,10 @@ router.post('/registration-form', userMiddleware, async (req, res) => {
 });
 
 router.post('/membership-form', userMiddleware, async (req, res) => {
-    const { success } = membershipFormSchema.safeParse(req.body);
+    const { success, error } = membershipFormSchema.safeParse(req.body);
     if (!success) {
         res.status(400).json({ message: 'Invalid Inputs' });
+        console.log(error)
     } else {
         try {
             const user = await User.find({ username: req.body.email });
@@ -196,9 +197,9 @@ router.post('/volunteer-form', userMiddleware, async (req, res) => {
         res.status(400).json({ message: 'Invalid Inputs' });
     } else {
         try {
-            const user = await User.find({ username: req.username });
+            const user = await User.find({ username: req.body.email });
             if (user.length === 0) {
-                res.status(404).json({ message: 'User e-mail not found' });
+                res.status(404).json({ message: 'Email not registered' });
             } else {
                 let volunteerApp = new VolunteerApp(req.body);
                 volunteerApp.userId = user[0]._id;

@@ -1,13 +1,13 @@
+import AdminNavbar from '../components/AdminNavbar';
 import DashboardCard from '../components/DashboardCard';
 import { DownloadButton } from '../components/DownloadButton';
 import GradientBlobs from '../components/GradientBlobs';
-import Navbar from '../components/Navbar';
 
 export const AdminDashboard = () => {
     return (
-        <div>
-            <Navbar/>
-        <div className=" relative grid grid-cols-2 gap-8 pt-10 px-40">
+        <div className='bg-bkg'>
+            <AdminNavbar/>
+        <div className=" relative grid lg:grid-cols-2 gap-8 pt-10 px-10 sm:20 md:px-40">
             <GradientBlobs />
             <DashboardCard
                 imgSource={'../src/assets/Registration_pexels-cytonn-955389.jpg'}

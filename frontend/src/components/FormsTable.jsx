@@ -8,7 +8,7 @@ export default function FormsTable({ tableData, typeOfForm, refreshData }) {
     const [info, setInfo] = useState(false);
     return (
         <div className="overflow-x-auto">
-            <table className="min-w-full border border-gray-200 bg-white">
+            <table className="min-w-full border border-content-2/30 bg-bkg">
                 <thead>
                     <tr className="bg-primary text-sm uppercase leading-normal text-white">
                         <th className="px-6 py-3 text-left">Created On</th>
@@ -24,7 +24,7 @@ export default function FormsTable({ tableData, typeOfForm, refreshData }) {
                     {tableData.map((item) => (
                         <tr
                             key={item._id}
-                            className="border-b border-gray-200 hover:bg-gray-100"
+                            className="border-b border-content-2/30 hover:bg-content-2/10"
                         >
                             <td className="px-6 py-3">
                                 {new Date(item.createdAt).toLocaleDateString()}

@@ -10,6 +10,7 @@ import { FormCheckBox } from '../components/FormCheckBox';
 import { FormSelect } from '../components/FormSelect';
 import axios from 'axios';
 import { InfoBox } from '../components/InfoBox';
+import Navbar from '../components/Navbar';
 
 export const FoodBankRegPage = () => {
     const [name, setName] = useState('');
@@ -40,6 +41,8 @@ export const FoodBankRegPage = () => {
     };
 
     return (
+        <div className='bg-bkg h-full'>
+            <Navbar />
         <div className="px-60 pt-5">
             <form
                 autoComplete="off"
@@ -138,7 +141,8 @@ export const FoodBankRegPage = () => {
                 <Heading label={'Family Members'} />
                 {family.map((item, index) => {
                     return (
-                        <div className="p-40" key={index}>
+                        <div className="" key={index}>
+                            <div className='grid grid-cols-2 gap-x-4'>
                             <FormInputBox
                                 placeholder={'Name'}
                                 name={'name'}
@@ -172,8 +176,9 @@ export const FoodBankRegPage = () => {
                                 onChange={(e) => {
                                     handleFormChange(e, index);
                                 }}
-                            />
-                            <button
+                            /> </div>
+                                    <div className='flex w-full justify-end items-center'>
+                            <button className='text-white bg-warning rounded-lg px-2 p-1'
                                 onClick={(e) => {
                                     e.preventDefault();
                                     let data = [...family];
@@ -183,10 +188,12 @@ export const FoodBankRegPage = () => {
                             >
                                 Remove
                             </button>
+                            </div>
                         </div>
                     );
                 })}
-                <button
+                <div className='flex justify-center items-center'>
+                <button className='text-white rounded-lg px-2 p-1 bg-secondary'
                     onClick={(e) => {
                         e.preventDefault();
                         setFamily([
@@ -202,7 +209,7 @@ export const FoodBankRegPage = () => {
                 >
                     Add Member
                 </button>
-
+                </div>
                 <FormInputBox
                     text={'Count of Adults'}
                     onChange={(e) => {
@@ -301,6 +308,7 @@ export const FoodBankRegPage = () => {
                 <Button label={'Submit'} type={'submit'} />
             </form>
             {info && <InfoBox text={info} type={infoType} />}
+        </div>
         </div>
     );
 };

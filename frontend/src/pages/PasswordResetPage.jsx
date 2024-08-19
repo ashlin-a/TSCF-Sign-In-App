@@ -105,7 +105,7 @@ export const PasswordResetPage = () => {
                         </span>
                     </div>
                     <div className="md:grid grid-cols-2 gap-8">
-                    <Button label={"Get OTP"} onClick={
+                    <Button className={'bg-secondary hover:bg-secondary/90 focus:ring-secondary/50'} label={"Get OTP"} onClick={
                         async (e)=>{
                             e.preventDefault();
                             if (!username) {
@@ -142,10 +142,10 @@ export const PasswordResetPage = () => {
             </div>
             <div className="hidden lg:block lg:col-span-3">
                 <div className="flex h-screen flex-col items-center justify-center text-right pb-32">
-                    <h1 className="px-20 text-5xl font-black text-bkg">
+                    <h1 className="px-20 text-5xl font-black text-white">
                         The Second Chance Foundation
                     </h1>
-                    <p className="mt-10 px-20 text-2xl font-medium text-bkg/80">
+                    <p className="mt-10 px-20 text-2xl font-medium text-white/80">
                         Supporting Marginalized, Racialized, and Formerly
                         Incarcerated Women
                     </p>

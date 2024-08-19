@@ -6,6 +6,10 @@ export const DownloadButton = ({ filename, text }) => {
         try {
             const response = await axios.get(`http://localhost:3000/admin/download/${filename}`, {
                 responseType: 'blob', 
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token'),
+                    'Content-Type': 'application/json',
+                },
             });
 
             const url = window.URL.createObjectURL(new Blob([response.data]));

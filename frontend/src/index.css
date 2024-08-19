@@ -2,18 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --color-bkg: 255 255 255;
-    --color-primary: 208 46 40;
-    --color-secondary: 255 123 24;
-    --color-tertiary: 33 131 128;
-    --color-content1: 0 0 0;
-    --color-content2: 107 114 128;
-    --color-warning: 220 38 38;
-    --color-success: 22 163 74;
-    --color-info: 37 99 235;
-  }
+.light {
+  --color-bkg: 255 255 255;
+  --color-primary: 208 46 40;
+  --color-secondary: 255 123 24;
+  --color-tertiary: 33 131 128;
+  --color-content1: 0 0 0;
+  --color-content2: 107 114 128;
+  --color-warning: 220 38 38;
+  --color-success: 22 163 74;
+  --color-info: 37 99 235;
+}
+
+.dark {
+  --color-bkg: 38 38 38;
+  --color-primary: 208 46 40;
+  --color-secondary: 255 123 24;
+  --color-tertiary: 33 131 128;
+  --color-content1: 255 255 255;
+  --color-content2: 156 163 175;
+  --color-warning: 220 38 38;
+  --color-success: 22 163 74;
+  --color-info: 37 99 235;
 }
 
 @layer utilities{
@@ -26,6 +36,9 @@
   }  
 }
 
+* {
+  @apply transition-colors duration-200
+}
 
 
 @layer components {

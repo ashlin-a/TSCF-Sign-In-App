@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { parseISO } from 'date-fns';
 import { FormCheckBox } from '../components/FormCheckBox';
 import { FormInputBox } from '../components/FormInputBox';
 import { FormRadioButton } from '../components/FormRadiobutton';
@@ -11,6 +12,7 @@ import { Heading } from '../components/Heading';
 import Navbar from '../components/Navbar';
 import { InfoBox } from '../components/InfoBox';
 import { FormPhoneBox } from '../components/FormPhoneBox';
+import {FormDateBox} from '../components/FormDateBox'
 
 export const MembershipFormPage = () => {
     const [membershipType, setMembershipType] = useState('');
@@ -40,6 +42,7 @@ export const MembershipFormPage = () => {
     const [show, setShow] = useState(false);
     const [infoType, setInfoType] = useState('warning');
     const [info, setInfo] = useState(false);
+    
 
     useEffect(() => {
         const fetchUsername = async () => {
@@ -68,7 +71,7 @@ export const MembershipFormPage = () => {
 
     const payment = { method: paymentMethod };
     return (
-        <div>
+        <div className='h-full bg-bkg'>
             <Navbar />
             <div className="px-10 py-5 md:px-20 md:py-10">
                 <form
@@ -87,7 +90,7 @@ export const MembershipFormPage = () => {
                                     fax,
                                     email,
                                     website,
-                                    org: {
+                                    organization: {
                                         execDirector,
                                         contactPerson,
                                         position,
@@ -114,6 +117,8 @@ export const MembershipFormPage = () => {
                                     },
                                 },
                             );
+                            setInfo(response.data.message);
+                        setInfoType('success')
                         } catch (error) {
                             setInfo(
                                 error.response?.data?.message ||
@@ -282,12 +287,9 @@ export const MembershipFormPage = () => {
                                 setRepresentativeName(e.target.value);
                             }}
                         />
-                        <DatePicker
-                            text={'Select Date'}
-                            onChange={(selectedDate) => {
-                                setRepresentativeDate(selectedDate);
-                            }}
-                        />
+                        <FormDateBox text={'Select Date'} onChange={(e)=>{
+                            setRepresentativeDate(parseISO(e.target.value))
+                        }} />
                         <div className="pb-5 md:col-span-2 lg:col-span-3">
                             <Heading label={'Payment Info'} />
                         </div>
@@ -299,7 +301,7 @@ export const MembershipFormPage = () => {
                         />
                         <div className="mt-4 md:col-span-2 lg:col-span-3">
                             <Heading label={'Membership Declaration'} />
-                            <ol className="my-4 list-decimal space-y-2 pl-7">
+                            <ol className="my-4 list-decimal text-content-1 space-y-2 pl-7">
                                 <li>
                                     That I am eighteen years of age or more.
                                 </li>
@@ -348,12 +350,9 @@ export const MembershipFormPage = () => {
                             }}
                         />
 
-                        <DatePicker
-                            text={'Select Date'}
-                            onChange={(selectedDate) => {
-                                setDate(selectedDate);
-                            }}
-                        />
+                        <FormDateBox text={'Select Date'} onChange={(e)=>{
+                            setDate(parseISO(e.target.value))
+                        }} />
                     </div>
                     <Button type={'submit'} label={'submit'} />
                 </form>

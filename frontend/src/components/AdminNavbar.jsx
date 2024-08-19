@@ -1,15 +1,17 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
+import {twMerge} from 'tailwind-merge'
 
-export default function Navbar() {
+export default function AdminNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navlinks = [
-        { name: 'Registration', to: '/registration-form' },
-        { name: 'Membership', to: '/membership-form' },
-        { name: 'Volunteer', to: '/volunteer-form' },
-        { name: 'Food Bank', to: '/food-bank' },
+        { name: 'Dashboard', to: '/admin/dashboard' },
+        { name: 'Registrations', to: '/admin/registration-forms' },
+        { name: 'Memberships', to: '/admin/membership-forms' },
+        { name: 'Volunteers', to: '/admin/volunteer-forms' },
+        { name: 'Food Bank', to: '/admin/foodbank-forms' },
     ];
     const navigate = useNavigate();
 
@@ -21,7 +23,7 @@ export default function Navbar() {
     return (
         <nav className="flex justify-between bg-bkg justify-items-center p-2 px-5">
             <div className="flex items-center gap-x-4 text-xl">
-                <img src="./src/assets/cropped-logo-1.png" className="h-10" />
+                <img src="../src/assets/cropped-logo-1.png" className="h-10" />
                 <h3 className="text-center text-lg font-semibold text-content-1 md:text-2xl">
                     The Second Chance Foundation
                 </h3>
@@ -62,7 +64,7 @@ export default function Navbar() {
                     </button>
                 )}
                 <FaBars
-                    className="block lg:hidden"
+                    className="block lg:hidden text-content-1"
                     onClick={() => {
                         setIsMenuOpen(!isMenuOpen);
                     }}
@@ -70,7 +72,7 @@ export default function Navbar() {
             </div>
 
             <div
-            className={`absolute z-30 left-0 top-12 flex w-full transform flex-col items-center justify-center gap-5 bg-bkg transition-transform lg:hidden ${isMenuOpen ? 'absolue' : 'hidden'}`}
+                className={`absolute z-30 left-0 top-12 flex w-full transform flex-col items-center justify-center gap-5 bg-bkg transition-transform lg:hidden ${isMenuOpen ? 'absolue' : 'hidden'}`}
             >
                 <ul className="flex w-full flex-col items-center gap-3 p-4">
                     {navlinks.map((item) => (
