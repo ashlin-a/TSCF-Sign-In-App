@@ -1,13 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
-import {twMerge} from 'tailwind-merge'
 
 export default function AdminNavbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const navlinks = [
         { name: 'Dashboard', to: '/admin/dashboard' },
+        { name: 'Create Admin', to: '/admin/signup' },
         { name: 'Registrations', to: '/admin/registration-forms' },
         { name: 'Memberships', to: '/admin/membership-forms' },
         { name: 'Volunteers', to: '/admin/volunteer-forms' },
@@ -30,7 +30,7 @@ export default function AdminNavbar() {
             </div>
 
             <div className="flex items-center gap-5">
-                <ul className="hidden items-center gap-x-7 lg:flex">
+                <ul className="hidden items-center gap-x-7 xl:flex">
                     {navlinks.map((item) => (
                         <li className="list-none" key={item.to}>
                             <Link
@@ -64,7 +64,7 @@ export default function AdminNavbar() {
                     </button>
                 )}
                 <FaBars
-                    className="block lg:hidden text-content-1"
+                    className="block xl:hidden text-content-1"
                     onClick={() => {
                         setIsMenuOpen(!isMenuOpen);
                     }}
@@ -72,7 +72,7 @@ export default function AdminNavbar() {
             </div>
 
             <div
-                className={`absolute z-30 left-0 top-12 flex w-full transform flex-col items-center justify-center gap-5 bg-bkg transition-transform lg:hidden ${isMenuOpen ? 'absolue' : 'hidden'}`}
+                className={`absolute z-30 left-0 top-12 flex w-full transform flex-col items-center justify-center gap-5 bg-bkg transition-transform xl:hidden ${isMenuOpen ? 'absolue' : 'hidden'}`}
             >
                 <ul className="flex w-full flex-col items-center gap-3 p-4">
                     {navlinks.map((item) => (
