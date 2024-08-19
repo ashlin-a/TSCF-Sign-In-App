@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bkg: 255 255 255;
+    --color-primary: 208 46 40;
+    --color-secondary: 255 123 24;
+    --color-tertiary: 33 131 128;
+    --color-content1: 0 0 0;
+    --color-content2: 107 114 128;
+    --color-warning: 220 38 38;
+    --color-success: 22 163 74;
+    --color-info: 37 99 235;
+  }
+}
+
+@layer utilities{
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }  
+}
+
+
+
+@layer components {
+  .no-spinner {
+    -moz-appearance: textfield; 
+    appearance: none; 
+  }
+
+  .no-spinner::-webkit-outer-spin-button,
+  .no-spinner::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none; 
+  }
+}
+
+
