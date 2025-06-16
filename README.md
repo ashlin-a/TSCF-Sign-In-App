@@ -1,26 +1,155 @@
-# Description
-This is a sign-in program for clients visiting the Hub Centre of [The Second Chance Foundation (TSCF)](https://thesecondchancefoundation.ca/). TSCF is a non-profit women’s organization in the GTA and they also serve as a women’s networking group in Toronto. This web application will allow clients to sign in and fill forms to register for various services offered by the organization. The organization will use this app to manage the forms in the database and export excel files containing all the forms data.  
+# TSCF Sign-In App
 
-# Screenshots
+A modern web application built for The Second Chance Foundation (TSCF) to digitize their manual forms and logbooks, replacing paper-based processes with an efficient digital solution for their Hub Centre.
 
-### Login Page
-![image](https://github.com/user-attachments/assets/a755e861-a187-4066-856c-0895276d5618)
-![image](https://github.com/user-attachments/assets/689faad7-b6a9-42ec-ba8b-dc57dcf1b6cd)
+## 🌟 About
 
-### User Screens
-![Screenshot 2025-06-01 at 15-08-38 Sign-In App](https://github.com/user-attachments/assets/eee05de7-1130-49d2-87f6-b73eaafec11f)
-![Screenshot 2025-06-01 at 23-25-20 Sign-In App](https://github.com/user-attachments/assets/a4bb5c76-cf7a-4656-bec1-264ee013f8ed)
-![Screenshot 2025-06-01 at 23-33-04 Sign-In App](https://github.com/user-attachments/assets/68a456e6-8c1e-433a-a9de-fb0638d9b5cb)
-![Screenshot 2025-06-01 at 23-27-50 Sign-In App](https://github.com/user-attachments/assets/bb254b90-1df4-4ed2-b885-f710b944cc6e)
-![Screenshot 2025-06-01 at 23-27-36 Sign-In App](https://github.com/user-attachments/assets/f499843c-0639-4339-be66-dbd443fb0f06)
-![Screenshot 2025-06-01 at 15-09-25 Sign-In App](https://github.com/user-attachments/assets/00de643f-f02e-4cc1-b9ab-31484967cd57)
-![Screenshot 2025-06-01 at 23-30-58 Sign-In App](https://github.com/user-attachments/assets/1688c264-4b93-4f82-b1a4-e0dbc9e2e3f4)
+The Second Chance Foundation is a non-profit women's organization serving the Greater Toronto Area (GTA) and operates as a women's networking group in Toronto. This application digitizes their traditional paper-based forms and logbooks, allowing clients to complete registration forms electronically while providing administrators with powerful tools to manage data and generate reports.
 
-### Admin Screens
-![Screenshot 2025-06-01 at 15-10-57 Sign-In App](https://github.com/user-attachments/assets/f58b8c6f-6bc2-40fe-a017-28fcfabd48d3)
-![Screenshot 2025-06-01 at 15-12-37 Sign-In App](https://github.com/user-attachments/assets/1488deb7-275f-4880-abf9-ca6ca67e0a67)
-![Screenshot 2025-06-01 at 15-11-08 Sign-In App](https://github.com/user-attachments/assets/30158f77-d3bb-418f-a6b9-f2cb790a9d55)
-![Screenshot 2025-06-01 at 15-12-46 Sign-In App](https://github.com/user-attachments/assets/1db85efe-9562-4436-a5a2-f2966b5230da)
-![Screenshot 2025-06-01 at 15-11-45 Sign-In App](https://github.com/user-attachments/assets/f123be57-5409-491f-aae2-59f060d8c11c)
-![Screenshot 2025-06-01 at 15-12-56 Sign-In App](https://github.com/user-attachments/assets/63fdc29d-9e9e-4605-b896-b3ff882aa0d1)
-![Screenshot 2025-06-01 at 00-31-25 Sign-In App](https://github.com/user-attachments/assets/2585db35-989b-436a-b92d-949375a443af)
+**Visit TSCF:** [https://thesecondchancefoundation.ca/](https://thesecondchancefoundation.ca/)
+
+## ✨ Features
+
+### For Clients
+- **Digital Forms**: Convert paper forms to digital format for easier completion
+- **Service Registration**: Complete registration forms for various TSCF services
+- **User-Friendly Interface**: Intuitive design replacing manual logbooks
+- **Multi-Step Forms**: Guided form completion process
+- **Real-time Validation**: Instant feedback on form inputs
+- **OTP Verification**: Secure email-based verification using Gmail
+- **Mobile-First** - Fully responsive design that works on all devices
+
+### For Administrators
+- **Dashboard Overview**: Comprehensive view of all form submissions and registrations
+- **Data Management**: View, edit, and manage client information digitally
+- **Excel Export**: Generate and download Excel reports replacing manual logbooks
+- **User Management**: Admin account creation and management
+- **Analytics**: Track service usage and form completion patterns
+- **Network Deployment**: Designed for internal network hosting
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 18.3.1** - Modern UI library
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Router DOM** - Client-side routing
+- **Headless UI** - Accessible UI components
+- **Heroicons & React Icons** - Icon libraries
+- **Axios** - HTTP client for API requests
+- **Date-fns** - Date utility library
+
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web application framework
+- **MongoDB** - NoSQL database
+- **Mongoose** - MongoDB object modeling
+- **JWT** - JSON Web Token authentication
+- **bcryptjs** - Password hashing
+- **Zod** - Schema validation
+- **ExcelJS** - Excel file generation
+- **Nodemailer** - Email functionality for OTP delivery via Gmail
+- **OTP Generator** - One-time password generation for secure verification
+
+## 📋 Prerequisites
+
+Before running this application, make sure you have the following installed:
+
+- **Node.js** (version 16 or higher)
+- **npm** package manager
+- **MongoDB** (local installation or MongoDB Atlas account)
+- **Gmail Account** with App Password enabled for OTP functionality
+
+**Note:** This application is designed for internal network deployment and is not intended for public hosting.
+
+## Installation & Setup
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/ashlin-a/TSCF-Sign-In-App.git
+cd TSCF-Sign-In-App
+```
+
+### 2. Backend Setup
+```bash
+# Navigate to backend directory
+cd backend
+
+# Install dependencies
+npm install
+
+# Create environment file
+cp .env.example .env
+
+# Edit .env file with your configurations
+# Required variables:
+# - DB_URL (MongoDB connection string)
+# - JWT_SECRET & JWT_ADMIN_SECRET
+# - DEFAULT_ADMIN_USERNAME & DEFAULT_ADMIN_PASSWORD
+# - GMAIL_ADDRESS & GMAIL_APP_PASSWORD
+
+# Start the backend server
+npm start
+```
+
+### 3. Frontend Setup
+```bash
+# Navigate to frontend directory (from project root)
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+### 4. Environment Configuration
+
+Create a `.env` file in the backend directory with the following variables:
+
+```env
+# For JSON Web Token
+JWT_SECRET=<A strong password>
+JWT_ADMIN_SECRET=<A strong password>
+
+# Database Connection URL
+DB_URL=<Connection string of MongoDB>
+
+# Default admin account for initial login
+DEFAULT_ADMIN_USERNAME=<email address>
+DEFAULT_ADMIN_PASSWORD=<A strong password>
+
+# For sending OTP
+GMAIL_ADDRESS=<A valid gmail address>
+GMAIL_APP_PASSWORD=<App password of the above email address>
+```
+
+**Gmail Setup Instructions:**
+1. Enable 2-Factor Authentication on your Gmail account
+2. Generate an App Password for the application
+3. Use the App Password (not your regular Gmail password) in the GMAIL_APP_PASSWORD field
+
+## Usage
+
+### For Clients
+1. Navigate to the application URL (internal network)
+2. Complete the digital forms replacing traditional paper forms
+3. Receive OTP verification via Gmail for secure submission
+4. Submit forms electronically instead of manual logbook entries
+
+### For Administrators
+1. Access the admin portal using the default credentials configured in .env
+2. View the dashboard for overview of form submissions
+3. Manage client data digitally instead of paper records
+4. Export data to Excel for reporting and record-keeping
+5. Create and manage additional admin accounts
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- The Second Chance Foundation for their trust in this project
+- Niagara College Toronto for supporting the development
