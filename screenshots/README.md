@@ -5,7 +5,7 @@ This folder contains screenshots of the TSCF Sign-In App interface, showcasing b
 ## 🔐 Login Interface
 
 ### Authentication Pages
-![Login Page 1](screenshots/login-page-1.png)
+![Login Page 1](login-page-1.png)
 
 ![Login Page 2](screenshots/login-page-2.png)
 
