@@ -129,7 +129,7 @@ JWT_SECRET=<A strong password>
 JWT_ADMIN_SECRET=<A strong password>
 
 # Database Connection URL (use MongoDB Atlas or the service name 'mongo' for local Docker MongoDB)
-DB_URL=mongodb://mongo:27017/tscf-sign-in
+DB_URL=mongodb://mongo:27017
 
 # Default admin account for initial login
 DEFAULT_ADMIN_USERNAME=<email address>
@@ -180,12 +180,12 @@ docker-compose down -v
 - **Backend API**: Available at `http://localhost:3000` (for API requests).
 - **MongoDB**: Accessible at `mongo:27017` within the Docker network (or `localhost:27017` if connecting locally).
 
-**Note:** If using MongoDB Atlas instead of the local MongoDB service, update the `DB_URL` in the `.env` file to your Atlas connection string (e.g., `mongodb+srv://<username>:<password>@cluster0.mongodb.net/tscf-sign-in`).
+**Note:** If using MongoDB Atlas instead of the local MongoDB service, update the `DB_URL` in the `.env` file to your Atlas connection string (e.g., `mongodb+srv://<username>:<password>@cluster0.mongodb.net`).
 
 #### 5. Development with Docker
 - The `docker-compose.yml` mounts the `frontend` and `backend` directories as volumes, allowing live code updates without rebuilding images.
 - If you modify `package.json` or install new dependencies, rebuild the images with `docker-compose up --build`.
-- Ensure the `VITE_BACKEND_URL` in the `.env` file matches the backend service's address (`http://localhost:3000` for local access Snowden: System: access, or `http://backend:3000` within the Docker network).
+- The `VITE_BACKEND_URL=http://localhost:3000` environment variable is set for the frontend to communicate with the backend. If you encounter connectivity issues within the Docker network, try setting `VITE_BACKEND_URL=http://backend:3000` and rebuild.
 
 ## Usage
 
