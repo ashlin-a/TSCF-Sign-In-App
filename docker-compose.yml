@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    environment:
+      - VITE_BACKEND_URL=http://localhost:3000
+    command: npm run dev -- --host
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_ADMIN_SECRET=${JWT_ADMIN_SECRET}
+      - DB_URL=${DB_URL}
+      - DEFAULT_ADMIN_USERNAME=${DEFAULT_ADMIN_USERNAME}
+      - DEFAULT_ADMIN_PASSWORD=${DEFAULT_ADMIN_PASSWORD}
+      - GMAIL_ADDRESS=${GMAIL_ADDRESS}
+      - GMAIL_APP_PASSWORD=${GMAIL_APP_PASSWORD}
+
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
